@@ -73,6 +73,8 @@ editMahasiswa() {
 
 ## Hapus Data
 ![image](https://github.com/user-attachments/assets/d925100a-930b-4b29-9093-42c8d97cf8bb)
+![image](https://github.com/user-attachments/assets/aad1dd3f-aa31-4eff-8fa1-046e53447dd1)
+
 1. hapusMahasiswa(id: any) {
     this.api.hapus(id,
       'hapus.php?id=').subscribe({
@@ -87,7 +89,7 @@ editMahasiswa() {
       })
   }
 2. async konfirmasiHapus(id: any) { const alert = await this.alertController.create({ header: 'Konfirmasi Hapus', message: 'Apakah data ingin dihapus?', buttons: [ { text: 'Tidak', role: 'cancel', handler: () => { console.log('Hapus dibatalkan'); }, }, { text: 'Ya', handler: () => { this.hapusMahasiswa(id); }, }, ], }); await alert.present(); }
-3. 
+
 ### Penjelasan
 - hapusMahasiswa(id: any) adalah fungsi yang mengirimkan permintaan untuk menghapus data mahasiswa.
 - konfirmasiHapus(id: any) adalah fungsi yang memunculkan dialog konfirmasi sebelum data mahasiswa dihapus.
