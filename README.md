@@ -3,7 +3,7 @@ NIM   : H1D022097
 
 # Screensot Hasil dan Penejelasan 
 ## Halaman Home
-![image](https://github.com/user-attachments/assets/1408da3c-c033-4e46-91cc-28c72c7122a3)
+![image](https://github.com/user-attachments/assets/94d21018-4c9a-4869-92cb-e24816e9081e)
 
 ### Penjelasan
 1. Dihalaman home kita dapat melihat ada data mahasiswa beserta jurusannya dan di samping itu terdapat tombol eidt dan hapus
@@ -72,8 +72,8 @@ editMahasiswa() {
 - Jika gagal (error), pesan kesalahan dicetak di konsol.
 
 ## Hapus Data
-![image](https://github.com/user-attachments/assets/c16f35dc-262d-44e0-b36f-c0baf48ba3c5)
-hapusMahasiswa(id: any) {
+![image](https://github.com/user-attachments/assets/d925100a-930b-4b29-9093-42c8d97cf8bb)
+1. hapusMahasiswa(id: any) {
     this.api.hapus(id,
       'hapus.php?id=').subscribe({
         next: (res: any) => {
@@ -86,9 +86,14 @@ hapusMahasiswa(id: any) {
         }
       })
   }
-  
+2. async konfirmasiHapus(id: any) { const alert = await this.alertController.create({ header: 'Konfirmasi Hapus', message: 'Apakah data ingin dihapus?', buttons: [ { text: 'Tidak', role: 'cancel', handler: () => { console.log('Hapus dibatalkan'); }, }, { text: 'Ya', handler: () => { this.hapusMahasiswa(id); }, }, ], }); await alert.present(); }
+3. 
 ### Penjelasan
 - hapusMahasiswa(id: any) adalah fungsi yang mengirimkan permintaan untuk menghapus data mahasiswa.
+- konfirmasiHapus(id: any) adalah fungsi yang memunculkan dialog konfirmasi sebelum data mahasiswa dihapus.
+- Menggunakan alertController untuk membuat dialog konfirmasi dengan dua tombol: "Tidak" dan "Ya".
+- Jika "Tidak" dipilih, proses diakhiri tanpa melakukan apapun (console.log('Hapus dibatalkan')).
+- Jika "Ya" dipilih, fungsi hapusMahasiswa(id) dipanggil untuk melanjutkan penghapusan data mahasiswa berdasarkan id yang diberikan.
 - Memanggil api.hapus() dengan id dan endpoint hapus.php?id= sebagai parameter. Fungsi ini diasumsikan mengakses endpoint API yang bertanggung jawab untuk menghapus data.
 - Jika berhasil (next), data mahasiswa di-refresh dengan getMahasiswa(), dan pesan berhasil dicetak di konsol.
 - Jika gagal (error), pesan kesalahan dicetak di konsol.
